@@ -26,12 +26,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     usernameElement.textContent = currentUser.username;
 
-    const signOutButton = document.getElementById('sign-out');
-
-    signOutButton.addEventListener('click', () => {
-
-        window.location.href = '/index.html';
-
-    });
-
 });
+
+function displayInventory() {
+    
+    var productContainer = JSON.parse(localStorage.getItem("products")) || [];
+
+    var content = ``;
+
+    for (var i = 0; i < productContainer.length; i++) {
+
+        content += `
+
+        <tr>
+
+            <td>${i}</td>
+
+            <td>${productContainer[i].name}</td>
+
+            <td>${productContainer[i].price}</td>
+
+            <td>${productContainer[i].category}</td>
+
+            <td>${productContainer[i].desc}</td>
+
+        </tr>`;
+
+    }
+
+    document.getElementById("inventoryContent").innerHTML = content;
+
+}
+
+window.onload = function () {
+
+    displayInventory();
+
+};

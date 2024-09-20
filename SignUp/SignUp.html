@@ -10,6 +10,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+
+    <meta http-equiv="Pragma" content="no-cache">
+    
+    <meta http-equiv="Expires" content="0">
+
     <link rel="stylesheet" href="SignUp.css">
 
     <title> Genetika Pharmacy </title>
@@ -24,7 +30,7 @@
 
     <p> Please fill this details to create an account </p>
 
-    <form action="" method="get">
+    <form>
 
         <input type="text" name="username" id="username" placeholder="Enter Username" required>
 
@@ -36,7 +42,7 @@
 
         <input type="password" name="password" id="password" placeholder="Enter Password" required>
 
-        <div id="msg-3"> Length must be less than 8 chars with uppercase char, lower case chars, symbols, numbers </div>
+        <div id="msg-3"> Length must be at least 8 chars with uppercase char, lower case chars, symbols, numbers </div>
 
         <div class="gender">
 
@@ -44,13 +50,13 @@
 
             <div class="male">
 
-                <input type="radio" name="gender" id="male" value="Male"> <label for="male"> Male </label>
+                <input type="radio" name="gender" id="male" value="Male" required> <label for="male"> Male </label>
 
             </div>
             
             <div class="female">
                 
-                <input type="radio" name="gender" id="female" value="Female"> <label for="female"> Female </label>
+                <input type="radio" name="gender" id="female" value="Female" required> <label for="female"> Female </label>
 
             </div>
 
@@ -62,15 +68,23 @@
 
             <div class="admin">
 
-                <input type="radio" name="role" id="admin" value="Admin"> <label for="admin"> Admin </label>
+                <input type="radio" name="role" id="admin" value="Admin" required> <label for="admin"> Admin </label>
 
             </div>
             
             <div class="client">
 
-                <input type="radio" name="role" id="client" value="Client"> <label for="client"> Client </label>
+                <input type="radio" name="role" id="client" value="Client" required> <label for="client"> Client </label>
 
             </div>
+
+        </div>
+
+        <div id="admin-key-container" style="display: none;">
+
+            <input type="password" id="admin-key" placeholder="Enter Admin Key" />
+
+            <div id="admin-key-msg" style="display: none; color: red;"> Incorrect Admin Key </div>
 
         </div>
 

@@ -134,7 +134,7 @@ document.getElementById('password').addEventListener('input', (e) => {
 
     }
 
-    else if (e.target.value.length > 0 && e.target.value.length < 8
+    else if (e.target.value.length >= 8
         
         && hasLower(e.target.value) && hasUpper(e.target.value)
         
@@ -160,11 +160,31 @@ document.getElementById('password').addEventListener('input', (e) => {
 
 });
 
+document.querySelectorAll('input[name="role"]').forEach((input) => {
+
+    input.addEventListener('change', function () {
+
+        const adminKeyContainer = document.getElementById('admin-key-container');
+
+        if (this.value === 'Admin') {
+
+            adminKeyContainer.style.display = 'block';
+
+        } else {
+
+            adminKeyContainer.style.display = 'none';
+
+        }
+
+    });
+
+});
+
 document.querySelector('form').addEventListener('submit', (e) => {
 
-    console.log("Form is being submitted");
+    validateForm();
 
-    e.preventDefault(); // ?
+    e.preventDefault();
 
     let username = document.getElementById('username').value;
 
@@ -176,9 +196,25 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
     let role = document.querySelector('input[name="role"]:checked').value;
 
-    let users = JSON.parse(localStorage.getItem('users')) || []; //?
+    if (role === 'Admin') {
+
+        const adminKey = document.getElementById('admin-key').value;
+
+        const correctAdminKey = 'SECRET_KEY';
+
+        if (adminKey !== correctAdminKey) {
+
+            document.getElementById('admin-key-msg').style.display = 'block';
+
+            return;
+
+        }
+
+    }
+
+    let users = JSON.parse(localStorage.getItem('users')) || []; 
     
-    if (users.some(user => user.email === email)) { //?
+    if (users.some(user => user.email === email)) { 
 
         alert('User with this email already exists.');
 
@@ -186,21 +222,21 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
     }
 
-    users.push({ username, email, password, gender, role }); //?
+    users.push({ username, email, password, gender, role });
 
-    localStorage.setItem('users', JSON.stringify(users)); //?
+    localStorage.setItem('users', JSON.stringify(users));
 
     alert('Sign up successful!');
 
     if (role === 'Admin') {
 
-        window.location.href = 'Admin/adminHomePage.html'; //?
+        window.location.href = '/Admin/adminHomePage.html';
 
     }
 
     else {
 
-        window.location.href = 'Client/clientHomePage.html';
+        window.location.href = '/Client/clientHomePage.html';
 
     }
 

@@ -16,21 +16,23 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
         if (user.role === 'Admin') {
 
-            window.location.href = 'Admin/adminHomePage.html';
+            window.location.href = '/Admin/adminHomePage.html';
 
         }
         
         else {
 
-            window.location.href = 'Client/clientHomePage.html';
+            window.location.href = '/Client/clientHomePage.html';
 
         }
+        
+        window.history.replaceState(null, null, '/homepage.html');
         
     }
     
     else {
 
-        alert('Invalid email or password.');
+        alert('Invalid username or password.');
 
     }
 
