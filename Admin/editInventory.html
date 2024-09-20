@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormRoute</title>
+    <link rel="stylesheet" href="/bootstrap-4/css/bootstrap.min.css">
+</head>
+<body>
+    <div class=" w-75 mx-auto border border-dark p-3 rounded-3  mt-5 ">
+
+        <label for="productName" class="mb-2 fw-bold">productName:</label>
+        <input type="text" id="productName" class="form-control" onkeyup="editValues(this.value,'name')">
+
+
+        <label for="productPrice" class="mb-2 fw-bold">productPrice:</label>
+        <input type="number" id="productPrice" class="form-control"onkeyup="editValues(this.value,'price')">
+
+        <label for="productCategory" class="mb-2 fw-bold" >productCategory:</label>
+        <input type="text" id="productCategory" class="form-control"  onkeyup="editValues(this.value,'cat')">
+
+        <label for="productDesc" class="mb-2 fw-bold">productDesc:</label>
+        <input type="text" id="productDesc" class="form-control"onkeyup="editValues(this.value,'des')">
+
+        
+        <button id="addProduct" class="btn btn-info mt-5" onclick="addProducts()">addProduct</button>
+        <button id="deleteProduct" class="btn btn-info mt-5" onclick="deleteAllitems()">deleteform</button>
+
+    </div>
+
+    <div>
+
+        <table class="table w-75 mx-auto  mt-5">
+            <thead>
+                <th>index</th>
+                <th   >ProductName</th>
+                <th >ProductPrice</th>
+                <th  >ProductCateg</th>
+                <th  >ProductDesc</th>
+                <th>update</th>
+                <th>delete</th>
+
+            </thead>
+            <tbody class="text-center" id="content">
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+<script src="/bootstrap-4/js/bootstrap.bundle.min.js"></script>
+
+<script src="editInventory.js"></script>
+
+</body>
+</html>
