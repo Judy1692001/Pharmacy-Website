@@ -18,28 +18,32 @@ body {
     align-items: center;
 }
 
-nav {
+body nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     background-color: #034694;
     width: 100%;
     height: 5rem;
-    padding-right: 10rem;
     color: aliceblue;
-    border: 1px solid black;
 }
 
-span img {
-    width: 2rem;
+body nav span img {
+    width: 3rem;
     height: auto;
     padding-right: 1rem;
-    border: 1px solid black;
 }
 
-#username {
-    padding-left: 0.rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: 1px solid black;
+body nav p {
+    margin: 0;
+    padding: 0;
+}
+
+body nav button {
+    background-color: #034694;
+    border: none;
+    color: aliceblue;
+    margin-right: 3rem;
+    margin-left: 3rem;
+    cursor: pointer;
 }

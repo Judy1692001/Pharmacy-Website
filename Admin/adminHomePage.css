@@ -18,7 +18,7 @@ body {
     align-items: center;
 }
 
-nav {
+body nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -28,13 +28,18 @@ nav {
     color: aliceblue;
 }
 
-span img {
-    width: 2rem;
+body nav span img {
+    width: 3rem;
     height: auto;
     padding-right: 1rem;
 }
 
-button {
+body nav p {
+    margin: 0;
+    padding: 0;
+}
+
+body nav button {
     background-color: #034694;
     border: none;
     color: aliceblue;
@@ -55,7 +60,7 @@ article {
     align-items: center;
 }
 
-a {
+article a, article a:hover {
     border: none;
     border-radius: 5px;
     padding: 1.5rem;

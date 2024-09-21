@@ -18,22 +18,16 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
             window.location.href = '/Admin/adminHomePage.html';
 
-        }
-        
-        else {
+        } else {
 
             window.location.href = '/Client/clientHomePage.html';
 
         }
         
-        window.history.replaceState(null, null, '/homepage.html');
-        
-    }
-    
-    else {
+    } else {
 
         alert('Invalid username or password.');
 
     }
-
+    
 });

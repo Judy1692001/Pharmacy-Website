@@ -195,7 +195,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
     let gender = document.querySelector('input[name="gender"]:checked').value;
 
     let role = document.querySelector('input[name="role"]:checked').value;
-
+    
     if (role === 'Admin') {
 
         const adminKey = document.getElementById('admin-key').value;
@@ -211,30 +211,30 @@ document.querySelector('form').addEventListener('submit', (e) => {
         }
 
     }
-
+    
     let users = JSON.parse(localStorage.getItem('users')) || []; 
     
-    if (users.some(user => user.email === email)) { 
+    if (users.some(user => user.email === email)) {
 
         alert('User with this email already exists.');
 
         return;
 
     }
-
+    
     users.push({ username, email, password, gender, role });
 
     localStorage.setItem('users', JSON.stringify(users));
-
+    
+    localStorage.setItem('loggedInUser', JSON.stringify({ username, gender, role }));
+    
     alert('Sign up successful!');
-
+    
     if (role === 'Admin') {
 
         window.location.href = '/Admin/adminHomePage.html';
 
-    }
-
-    else {
+    } else {
 
         window.location.href = '/Client/clientHomePage.html';
 

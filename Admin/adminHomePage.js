@@ -1,8 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    let users = JSON.parse(localStorage.getItem('users'));
-        
-    let currentUser = users[users.length - 1]; //?
+
+    let currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (!currentUser) {
+
+        console.error('No current admin found');
+
+        window.location.href = '/index.html';
+
+        return;
+
+    }
 
     const maleEmoji = '/Assets/male.png';
 
@@ -12,13 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (currentUser.gender === 'Male') {
 
-        genderIcon.innerHTML = `<img src="${maleEmoji}" alt="male-icon">`;
+        genderIcon.innerHTML = `<img src="${maleEmoji}" alt="male-icon" width="30" height="30">`;
 
-    }
-    
-    else if (currentUser.gender === 'Female') {
+    } else if (currentUser.gender === 'Female') {
 
-        genderIcon.innerHTML = `<img src="${femaleEmoji}" alt="female-icon">`;
+        genderIcon.innerHTML = `<img src="${femaleEmoji}" alt="female-icon" width="30" height="30">`;
 
     }
 
@@ -30,8 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     signOutButton.addEventListener('click', () => {
 
-        window.location.href = '/index.html';
+        localStorage.removeItem('loggedInUser');
 
+        window.location.href = '/index.html';
+        
     });
 
 });

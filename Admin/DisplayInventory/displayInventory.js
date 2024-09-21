@@ -1,8 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    let users = JSON.parse(localStorage.getItem('users'));
-        
-    let currentUser = users[users.length - 1]; //?
+
+    let currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (!currentUser) {
+
+        console.error('No current user found');
+
+        window.location.href = '/index.html';
+
+        return;
+
+    }
 
     const maleEmoji = '/Assets/male.png';
 
@@ -12,13 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (currentUser.gender === 'Male') {
 
-        genderIcon.innerHTML = `<img src="${maleEmoji}" alt="male-icon">`;
+        genderIcon.innerHTML = `<img src="${maleEmoji}" alt="male-icon" width="30" height="30">`;
 
-    }
-    
-    else if (currentUser.gender === 'Female') {
+    } else if (currentUser.gender === 'Female') {
 
-        genderIcon.innerHTML = `<img src="${femaleEmoji}" alt="female-icon">`;
+        genderIcon.innerHTML = `<img src="${femaleEmoji}" alt="female-icon" width="30" height="30">`;
 
     }
 
@@ -26,10 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     usernameElement.textContent = currentUser.username;
 
+    const signOutButton = document.getElementById('sign-out');
+
+    signOutButton.addEventListener('click', () => {
+
+        localStorage.removeItem('loggedInUser');
+
+        window.location.href = '/index.html';
+
+    });
+
 });
 
 function displayInventory() {
-    
+
     var productContainer = JSON.parse(localStorage.getItem("products")) || [];
 
     var content = ``;
@@ -40,7 +56,7 @@ function displayInventory() {
 
         <tr>
 
-            <td>${i}</td>
+            <td>${i + 1}</td>
 
             <td>${productContainer[i].name}</td>
 
@@ -59,7 +75,7 @@ function displayInventory() {
 }
 
 window.onload = function () {
-
+    
     displayInventory();
 
 };
