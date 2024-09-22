@@ -1,20 +1,12 @@
 function validateForm() {
 
-    const usernameValid = document.getElementById('username').style.borderColor === 'green';
+    const username = document.getElementById('username').value.length >= 1 && document.getElementById('username').value.length <= 10;
 
-    const emailValid = document.getElementById('email').style.borderColor === 'green';
+    const email = isValidEmail(document.getElementById('email').value);
 
-    const passwordValid = document.getElementById('password').style.borderColor === 'green';
+    const password = isValidPassword(document.getElementById('password').value);
 
-    document.getElementsByTagName('button')[0].disabled = !(
-
-        usernameValid &&
-
-        emailValid &&
-
-        passwordValid
-
-    );
+    document.getElementsByTagName('button')[0].disabled = !(username && email && password);
 
 }
 
@@ -98,27 +90,9 @@ document.getElementById('email').addEventListener('input', (e) => {
 
 });
 
-function hasLower(input) {
-    
-    return /[a-z]/.test(input);
+function isValidPassword(input) {
 
-}
-
-function hasUpper(input) {
-    
-    return /[A-Z]/.test(input);
-
-}
-
-function hasSymbol(input) {
-    
-    return /[!@#$%^&*(),.?":{}|<>]/.test(input);
-
-}
-
-function hasNumber(input) {
-    
-    return /[1-9]/.test(input);
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(input);
 
 }
 
@@ -134,11 +108,7 @@ document.getElementById('password').addEventListener('input', (e) => {
 
     }
 
-    else if (e.target.value.length >= 8
-        
-        && hasLower(e.target.value) && hasUpper(e.target.value)
-        
-        && hasSymbol(e.target.value) && hasNumber(e.target.value)) {
+    else if (isValidPassword(e.target.value)) {
 
         document.getElementById('password').style.borderColor = 'green';
 
@@ -227,8 +197,6 @@ document.querySelector('form').addEventListener('submit', (e) => {
     localStorage.setItem('users', JSON.stringify(users));
     
     localStorage.setItem('loggedInUser', JSON.stringify({ username, gender, role }));
-    
-    alert('Sign up successful!');
     
     if (role === 'Admin') {
 

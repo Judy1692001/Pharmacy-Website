@@ -16,6 +16,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    padding-top: 5rem;
 }
 
 body nav {
@@ -24,8 +25,11 @@ body nav {
     align-items: center;
     background-color: #034694;
     width: 100%;
-    height: 5rem;
+    height: 80px;
     color: aliceblue;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
 body nav span img {
